@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+	<com.baidu.mapapi.map.MapView android:id="@+id/mapView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:clickable="true" />
+	
+	<LinearLayout android:id="@+id/ll_geocode"
+	    android:visibility="gone"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="0dip"
+        android:background="#D000"
+        android:minWidth="100dip"
+        android:orientation="vertical"
+        android:padding="2dp" >
+        <LinearLayout 
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <EditText android:id="@+id/et_lat"
+			    android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:numeric="decimal"
+	        	android:hint="请输入纬度"
+	        	android:text="31.032694" />
+			<EditText android:id="@+id/et_lng"
+			    android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:numeric="decimal"
+	        	android:hint="请输入经度"
+	        	android:text="121.435434" />
+			<Button android:id="@+id/btn_inversegeocode"
+			    android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:onClick="OnClickProcess"
+	        	android:text="反编码" />
+        </LinearLayout>
+        <LinearLayout 
+            android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+			<EditText android:id="@+id/et_city"
+			    android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:hint="城市"
+	        	android:text="上海" />
+			<EditText android:id="@+id/et_addr"
+			    android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:maxLines="1"
+	        	android:hint="请输入反地理编码地址"
+	        	android:text="上海市闵行区沪金高速公路" />
+			<Button android:id="@+id/btn_geocode"
+			    android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:onClick="OnClickProcess"
+	        	android:text="编码" />
+		</LinearLayout>
+    </LinearLayout>
+    
+	<LinearLayout android:id="@+id/ll_followsetting"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:background="#D000"
+        android:minWidth="100dip"
+        android:orientation="horizontal"
+        android:padding="2dp" >
+        <EditText android:id="@+id/et_radius"
+			    android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:numeric="integer"
+	        	android:hint="请输入半径（米）"
+	        	android:text="2000" />
+        	<Button android:id="@+id/btn_changeradius"
+			    android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:onClick="OnClickProcess"
+	        	android:text="更新半径" />
+			<Button android:id="@+id/btn_changeloc"
+			    android:layout_width="wrap_content"
+	        	android:layout_height="wrap_content"
+	        	android:onClick="OnClickProcess"
+	        	android:text="更新追踪位置" />
+    </LinearLayout>
+    
+	<LinearLayout android:id="@+id/ll_radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="65dip"
+        android:background="#D000"
+        android:minWidth="100dip"
+        android:orientation="vertical"
+        android:padding="2dp" >
+        <RadioGroup android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="显示面板" >
+			<RadioButton android:id="@+id/rbtn_follow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:textColor="#FFF"
+                android:text="跟踪设置" >
+            </RadioButton>
+            <RadioButton android:id="@+id/rbtn_geocode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFF"
+                android:text="地理编码" >
+            </RadioButton>
+        </RadioGroup>
+    </LinearLayout>
+    
+	<Button android:id="@+id/btn_locate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#D000"
+        android:layout_alignParentRight="true"
+        android:layout_above="@id/ll_radioGroup"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:padding="8dp"
+        android:textColor="#FFF"
+        android:text="定位"
+        android:onClick="OnClickProcess" />
+    
+</RelativeLayout>
