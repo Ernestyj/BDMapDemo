@@ -1,10 +1,8 @@
 package com.bdmapdemo;
 
 import android.app.Application;
-import android.app.Service;
 import android.os.Handler;
 import android.os.Message;
-import android.os.Vibrator;
 import android.util.Log;
 import android.widget.TextView;
 
@@ -33,7 +31,7 @@ public class BDApplication extends Application {
 	public Handler mLocationHandler;
 	
 	public TextView mLocationResult;
-	public Vibrator mVibrator;
+//	public Vibrator mVibrator;
 	
 	@Override
 	public void onCreate() {
@@ -58,7 +56,7 @@ public class BDApplication extends Application {
 //		mGeofenceClient = new GeofenceClient(getApplicationContext());
 		
 		//获取震动服务
-		mVibrator =(Vibrator)getApplicationContext().getSystemService(Service.VIBRATOR_SERVICE);
+//		mVibrator =(Vibrator)getApplicationContext().getSystemService(Service.VIBRATOR_SERVICE);
 	}
 	
 	/**获取BDApplication实例

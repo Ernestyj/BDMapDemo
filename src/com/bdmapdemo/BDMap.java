@@ -2,9 +2,11 @@ package com.bdmapdemo;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Service;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.Vibrator;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -51,7 +53,7 @@ public class BDMap extends Activity implements OnGetGeoCoderResultListener, OnCh
 	MapView mMapView;//百度地图视图控件
 	BaiduMap mMapController;//百度地图控制器
 	
-	private LocationClient mLocationClient;//定位服务的客户端
+	LocationClient mLocationClient;//定位服务的客户端
 	BDLocation mCurLocation;//当前位置
 	
 	GeoCoder mGeoCoder = null;//地理编码查询类
@@ -59,9 +61,11 @@ public class BDMap extends Activity implements OnGetGeoCoderResultListener, OnCh
 	EditText etLat, etLng, etCity, etAddr, etRadius;
 	RadioGroup radioGroup;
 	LinearLayout llGeoCode, llFollowSetting;
+	Vibrator mVibrator;//震动组件
 	
 	LatLng followPoint = null;//待跟踪的点坐标
 	int radius = 2000;//检测半径，默认2000米
+	boolean isOutBound = false;//是否离开限定区域
 	
 	@SuppressLint("HandlerLeak")
 	@Override
@@ -85,6 +89,7 @@ public class BDMap extends Activity implements OnGetGeoCoderResultListener, OnCh
 			}
 		});
 		
+		/**UI初始化*/
 		setContentView(R.layout.aty_bdmap);
 		llFollowSetting = (LinearLayout) findViewById(R.id.ll_followsetting);
 		llGeoCode = (LinearLayout) findViewById(R.id.ll_geocode);
@@ -95,6 +100,8 @@ public class BDMap extends Activity implements OnGetGeoCoderResultListener, OnCh
 		etRadius = (EditText) findViewById(R.id.et_radius);
 		radioGroup = (RadioGroup) this.findViewById(R.id.radioGroup);
 		radioGroup.setOnCheckedChangeListener(this);
+		//获取震动服务
+		mVibrator =(Vibrator)getApplicationContext().getSystemService(Service.VIBRATOR_SERVICE);
 		
         /**地图视图、控制器初始化 */
 		mMapView = (MapView) findViewById(R.id.mapView);//百度地图视图控件
@@ -198,8 +205,12 @@ public class BDMap extends Activity implements OnGetGeoCoderResultListener, OnCh
 			LatLng curPoint = new LatLng(mCurLocation.getLatitude(), mCurLocation.getLongitude());
 			double distance = DistanceUtil.getDistance(followPoint, curPoint);//传入参数为百度经纬度坐标
 			
+			isOutBound = distance > (double)radius;
+			if (isOutBound) {//超出限定区域，震动
+				mVibrator.vibrate(1000);//1s
+			}
 			Toast.makeText(getApplicationContext(), "测距结果：" + (int)distance 
-					+ "米 \n 是否超出范围：" + (distance > (double)radius), 
+					+ "米 \n 是否超出范围：" + isOutBound, 
 					Toast.LENGTH_LONG).show();
 		} else if (v.getId() == R.id.btn_changeradius) {
 			mMapController.clear();
@@ -212,8 +223,12 @@ public class BDMap extends Activity implements OnGetGeoCoderResultListener, OnCh
 				LatLng curPoint = new LatLng(mCurLocation.getLatitude(), mCurLocation.getLongitude());
 				double distance = DistanceUtil.getDistance(followPoint, curPoint);//传入参数为百度经纬度坐标
 				
+				isOutBound = distance > (double)radius;
+				if (isOutBound) {//超出限定区域，震动
+					mVibrator.vibrate(1000);//1s
+				}
 				Toast.makeText(getApplicationContext(), "测距结果：" + (int)distance 
-						+ "米 \n 是否超出范围：" + (distance > (double)radius), 
+						+ "米 \n 是否超出范围：" + isOutBound, 
 						Toast.LENGTH_LONG).show();
 			}
 		}
