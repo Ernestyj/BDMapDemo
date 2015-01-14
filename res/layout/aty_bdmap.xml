@@ -37,7 +37,7 @@
 			<Button android:id="@+id/btn_inversegeocode"
 			    android:layout_width="wrap_content"
 	        	android:layout_height="wrap_content"
-	        	android:onClick="OnClickProcess"
+	        	android:onClick="onClickProcess"
 	        	android:text="反编码" />
         </LinearLayout>
         <LinearLayout 
@@ -58,7 +58,7 @@
 			<Button android:id="@+id/btn_geocode"
 			    android:layout_width="wrap_content"
 	        	android:layout_height="wrap_content"
-	        	android:onClick="OnClickProcess"
+	        	android:onClick="onClickProcess"
 	        	android:text="编码" />
 		</LinearLayout>
     </LinearLayout>
@@ -81,12 +81,12 @@
         	<Button android:id="@+id/btn_changeradius"
 			    android:layout_width="wrap_content"
 	        	android:layout_height="wrap_content"
-	        	android:onClick="OnClickProcess"
+	        	android:onClick="onClickProcess"
 	        	android:text="更新半径" />
 			<Button android:id="@+id/btn_changeloc"
 			    android:layout_width="wrap_content"
 	        	android:layout_height="wrap_content"
-	        	android:onClick="OnClickProcess"
+	        	android:onClick="onClickProcess"
 	        	android:text="更新追踪位置" />
     </LinearLayout>
     
@@ -131,6 +131,6 @@
         android:padding="8dp"
         android:textColor="#FFF"
         android:text="定位"
-        android:onClick="OnClickProcess" />
+        android:onClick="onClickProcess" />
     
 </RelativeLayout>

@@ -179,7 +179,7 @@ public class BDMap extends Activity implements OnGetGeoCoderResultListener, OnCh
 	/**按钮单击事件处理
 	 * @param v
 	 */
-	public void OnClickProcess(View v) {
+	public void onClickProcess(View v) {
 		if (v.getId() == R.id.btn_inversegeocode) {
 			LatLng ptCenter = new LatLng((Float.valueOf(etLat.getText().toString())), 
 					(Float.valueOf(etLng.getText().toString())));
