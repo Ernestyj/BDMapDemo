@@ -1,5 +1,10 @@
 <resources>
 
     <string name="app_name">BDMapDemo</string>
+    
+    <string-array name="aty_list">
+        <item>BDMap Default</item>
+        <item>BDMap Custom Fragment</item>
+    </string-array>
 
 </resources>

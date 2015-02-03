@@ -3,7 +3,6 @@ package com.bdmapdemo;
 import android.app.Application;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.baidu.location.BDLocation;
@@ -18,7 +17,7 @@ import com.baidu.mapapi.SDKInitializer;
  * @data 2014-12-24
  */
 public class BDApplication extends Application {
-	private static final String TAG = "BDApplication";
+	static final String TAG = "BDApplication";
 	public static final int NEW_LOC_MSG = 0;
 	
 	private static BDApplication mBDApplicationInstance;
@@ -85,7 +84,7 @@ public class BDApplication extends Application {
 		@Override
 		public void onReceiveLocation(BDLocation location) {
 			//记录获取的位置信息 
-			logLocationInfo(location);
+//			logLocationInfo(location);
 			if (location == null) return;
 			//发送新位置信息
 			Message msg = new Message();
@@ -99,48 +98,48 @@ public class BDApplication extends Application {
 	/**记录获取的位置信息
 	 * @param location
 	 */
-	private void logLocationInfo(BDLocation location) {
-		StringBuffer sb = new StringBuffer(256);
-		sb.append(" time : ");
-		sb.append(location.getTime());
-		sb.append("\n error code : ");
-		sb.append(location.getLocType());
-		sb.append("\n latitude : ");
-		sb.append(location.getLatitude());
-		sb.append("\n lontitude : ");
-		sb.append(location.getLongitude());
-		sb.append("\n radius : ");
-		sb.append(location.getRadius());
-		if (location.getLocType() == BDLocation.TypeGpsLocation){
-			sb.append("\n speed : ");
-			sb.append(location.getSpeed());
-			sb.append("\n satellite : ");
-			sb.append(location.getSatelliteNumber());
-			sb.append("\n direction : ");
-			sb.append("\n addr : ");
-			sb.append(location.getAddrStr());
-			sb.append(location.getDirection());
-		} else if (location.getLocType() == BDLocation.TypeNetWorkLocation){
-			sb.append("\n addr : ");
-			sb.append(location.getAddrStr());
-			//运营商信息
-			sb.append("\n operationers : ");
-			sb.append(location.getOperators());
-		}
-		logMsg(sb.toString());
-		Log.i(TAG, sb.toString());
-	}
+//	private void logLocationInfo(BDLocation location) {
+//		StringBuffer sb = new StringBuffer(256);
+//		sb.append(" time : ");
+//		sb.append(location.getTime());
+//		sb.append("\n error code : ");
+//		sb.append(location.getLocType());
+//		sb.append("\n latitude : ");
+//		sb.append(location.getLatitude());
+//		sb.append("\n lontitude : ");
+//		sb.append(location.getLongitude());
+//		sb.append("\n radius : ");
+//		sb.append(location.getRadius());
+//		if (location.getLocType() == BDLocation.TypeGpsLocation){
+//			sb.append("\n speed : ");
+//			sb.append(location.getSpeed());
+//			sb.append("\n satellite : ");
+//			sb.append(location.getSatelliteNumber());
+//			sb.append("\n direction : ");
+//			sb.append("\n addr : ");
+//			sb.append(location.getAddrStr());
+//			sb.append(location.getDirection());
+//		} else if (location.getLocType() == BDLocation.TypeNetWorkLocation){
+//			sb.append("\n addr : ");
+//			sb.append(location.getAddrStr());
+//			//运营商信息
+//			sb.append("\n operationers : ");
+//			sb.append(location.getOperators());
+//		}
+//		logMsg(sb.toString());
+//		Log.i(TAG, sb.toString());
+//	}
 	
 	/**显示请求字符串
 	 * @param str
 	 */
-	private void logMsg(String str) {
-		try {
-			if (mLocationResult != null)
-				mLocationResult.setText(str);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+//	private void logMsg(String str) {
+//		try {
+//			if (mLocationResult != null)
+//				mLocationResult.setText(str);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 }

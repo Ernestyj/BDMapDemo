@@ -5,7 +5,7 @@
 
     <uses-sdk
         android:minSdkVersion="14"
-        android:targetSdkVersion="20" />
+        android:targetSdkVersion="21" />
     
     <!-- 百度地图所需权限 -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />  
@@ -44,14 +44,23 @@
         <meta-data android:name="com.baidu.lbsapi.API_KEY"  
         	android:value="TasaXGG362pS9COhMDny15S9" />
         
+        
+        <activity android:name="com.bdmapdemo.MainListActivity" >
+            <intent-filter>
+	            <action android:name="android.intent.action.MAIN"/>
+	            <category android:name="android.intent.category.LAUNCHER"/>
+        	 </intent-filter>
+        </activity>
         <activity android:name="com.bdmapdemo.BDMap" 
              android:configChanges="orientation|keyboardHidden"
              android:screenOrientation="portrait" >
-             <intent-filter>
-	            <action android:name="android.intent.action.MAIN"/>
-	            <category android:name="android.intent.category.LAUNCHER"/>
-        	</intent-filter>
         </activity>
+        <activity android:name="com.bdmapdemo.BDMapFragmentAty"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait" >
+        </activity>
+        
+        
         <!-- 注意：Fragment实现地图的方式并不稳定，不推荐使用 -->
         <activity android:name="com.bdmapdemo.MapFragment" ></activity>
         
