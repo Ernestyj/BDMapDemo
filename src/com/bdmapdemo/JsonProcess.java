@@ -17,7 +17,7 @@ import com.loopj.android.http.RequestParams;
 import com.loopj.android.http.SyncHttpClient;
 import com.loopj.android.http.TextHttpResponseHandler;
 
-/**JsonAty extends Activity
+/**JsonProcess
  * json操作（创建、解析）测试；
  * @author Eugene
  * @data 2015-1-25
